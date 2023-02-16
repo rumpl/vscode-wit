@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "wit",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#block-comments"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "comment": "line comments",
+          "name": "comment.line.double-slash",
+          "match": "\\s*//.*"
+        }
+      ]
+    },
+    "block-comments": {
+      "patterns": [
+        {
+          "comment": "empty block comments",
+          "name": "comment.block.rust",
+          "match": "/\\*\\*/"
+        },
+        {
+          "comment": "block documentation comments",
+          "name": "comment.block.documentation.rust",
+          "begin": "/\\*\\*",
+          "end": "\\*/",
+          "patterns": [
+            {
+              "include": "#block-comments"
+            }
+          ]
+        },
+        {
+          "comment": "block comments",
+          "name": "comment.block.rust",
+          "begin": "/\\*(?!\\*)",
+          "end": "\\*/",
+          "patterns": [
+            {
+              "include": "#block-comments"
+            }
+          ]
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword",
+          "match": "\\b(use|type|resource|u8|u16|u32|u64|s8|s16|s32|s64|float32|float64|char|record|enum|flag|union|bool|string|option|list|result|as|static|tuple|future|stream|import|export|world|default|interface|variant|func)\\b"
+        }
+      ]
+    },
+    "strings": {
+      "name": "string.quoted",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.wit",
+          "match": "\\\\."
+        }
+      ]
+    }
+  },
+  "scopeName": "source.wit"
+}

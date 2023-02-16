@@ -1,0 +1,30 @@
+{
+  "name": "wit",
+  "displayName": "wit",
+  "description": "wit",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "wit",
+        "extensions": [
+          ".wit"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "wit",
+        "scopeName": "source.wit",
+        "path": "./syntaxes/wit.tmLanguage.json"
+      }
+    ]
+  }
+}
